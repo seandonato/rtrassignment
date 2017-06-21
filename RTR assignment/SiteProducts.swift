@@ -108,7 +108,24 @@ UITableViewController{
                         
                         iProduct.imagesBySize = (dic.value(forKeyPath: "imagesBySize") as! NSDictionary);
                     }
-                    
+                    if let key = dic.value(forKeyPath: "rentalFee8Day")
+                    {
+                        
+                        iProduct.styleNotes = (dic.value(forKeyPath: "rentalFee8Day") as! String);
+                    }
+                    if let key = dic.value(forKeyPath: "rentalFee")
+                    {
+                        
+                        iProduct.styleNotes = (dic.value(forKeyPath: "rentalFee") as! String);
+                    }
+                    if let key = dic.value(forKeyPath: "clearance")
+                    {
+                        
+                        iProduct.styleNotes = (dic.value(forKeyPath: "clearance") as! String);
+                    }
+
+
+
                    // iProduct.styleName = (dic.value(forKeyPath: "styleName") as! String);
                 
                     self.products.append(iProduct);
@@ -156,6 +173,16 @@ UITableViewController{
             
             return
             
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let myVC = storyboard?.instantiateViewControllerWithIdentifier("SecondVC") as! SecondVC
+        myVC.stringPassed = myLabel.text!
+        myVC.intPassed = myInt
+        navigationController?.pushViewController(myVC, animated: true)
+        
+        
     }
 
 }

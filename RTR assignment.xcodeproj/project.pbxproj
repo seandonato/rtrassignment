@@ -10,6 +10,7 @@
 		A98180A61EF99E7F00C248C8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98180A51EF99E7F00C248C8 /* Product.swift */; };
 		A98180AC1EF9B35C00C248C8 /* MyProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98180AB1EF9B35C00C248C8 /* MyProducts.swift */; };
 		A98180AE1EF9B36C00C248C8 /* SiteProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98180AD1EF9B36C00C248C8 /* SiteProducts.swift */; };
+		A98180B01EFB065800C248C8 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98180AF1EFB065800C248C8 /* ProductView.swift */; };
 		A9F0D0831EF95D2E00AD1242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0D0821EF95D2E00AD1242 /* AppDelegate.swift */; };
 		A9F0D0851EF95D2E00AD1242 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0D0841EF95D2E00AD1242 /* ViewController.swift */; };
 		A9F0D0881EF95D2E00AD1242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9F0D0861EF95D2E00AD1242 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		A98180A51EF99E7F00C248C8 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A98180AB1EF9B35C00C248C8 /* MyProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProducts.swift; path = ../MyProducts.swift; sourceTree = "<group>"; };
 		A98180AD1EF9B36C00C248C8 /* SiteProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteProducts.swift; sourceTree = "<group>"; };
+		A98180AF1EFB065800C248C8 /* ProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		A9F0D07F1EF95D2E00AD1242 /* RTR assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RTR assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F0D0821EF95D2E00AD1242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9F0D0841EF95D2E00AD1242 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				A98180A51EF99E7F00C248C8 /* Product.swift */,
 				A98180AB1EF9B35C00C248C8 /* MyProducts.swift */,
 				A98180AD1EF9B36C00C248C8 /* SiteProducts.swift */,
+				A98180AF1EFB065800C248C8 /* ProductView.swift */,
 				A9F0D0861EF95D2E00AD1242 /* Main.storyboard */,
 				A9F0D08C1EF95D2E00AD1242 /* Assets.xcassets */,
 				A9F0D08E1EF95D2E00AD1242 /* LaunchScreen.storyboard */,
@@ -278,6 +281,7 @@
 				A9F0D0851EF95D2E00AD1242 /* ViewController.swift in Sources */,
 				A98180A61EF99E7F00C248C8 /* Product.swift in Sources */,
 				A98180AC1EF9B35C00C248C8 /* MyProducts.swift in Sources */,
+				A98180B01EFB065800C248C8 /* ProductView.swift in Sources */,
 				A9F0D08B1EF95D2E00AD1242 /* RTR_assignment.xcdatamodeld in Sources */,
 				A9F0D0831EF95D2E00AD1242 /* AppDelegate.swift in Sources */,
 			);
