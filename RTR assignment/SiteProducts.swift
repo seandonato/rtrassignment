@@ -58,13 +58,13 @@ UITableViewController{
                     
                     var iProduct = Product();
 
-                    
                     var dic = NSDictionary();
                     
                     dic = self.dataArray[i];
                     
-                    
                     var key : String = String()
+                    var nKey : Int = Int()
+                    var bKey : Bool = Bool()
                     var dKey : NSDictionary = NSDictionary()
 
                     
@@ -107,23 +107,25 @@ UITableViewController{
                     {
                         
                         iProduct.imagesBySize = (dic.value(forKeyPath: "imagesBySize") as! NSDictionary);
+                        
                     }
-                    if let key = dic.value(forKeyPath: "rentalFee8Day")
+                    if let nKey = dic.value(forKeyPath: "rentalFee8Day")
                     {
                         
-                        iProduct.styleNotes = (dic.value(forKeyPath: "rentalFee8Day") as! String);
+                        iProduct.rentalFee8Day = (dic.value(forKeyPath: "rentalFee8Day") as! Int);
                     }
-                    if let key = dic.value(forKeyPath: "rentalFee")
+                    
+                    if let nKey = dic.value(forKeyPath: "rentalFee")
                     {
                         
-                        iProduct.styleNotes = (dic.value(forKeyPath: "rentalFee") as! String);
+                        iProduct.rentalFee = (dic.value(forKeyPath: "rentalFee") as! Int);
                     }
-                    if let key = dic.value(forKeyPath: "clearance")
+                    if let bKey = dic.value(forKeyPath: "clearance")
                     {
                         
-                        iProduct.styleNotes = (dic.value(forKeyPath: "clearance") as! String);
+                        iProduct.clearance = (dic.value(forKeyPath: "clearance") as! Bool);
+                        
                     }
-
 
 
                    // iProduct.styleName = (dic.value(forKeyPath: "styleName") as! String);
@@ -177,9 +179,10 @@ UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let myVC = storyboard?.instantiateViewControllerWithIdentifier("SecondVC") as! SecondVC
-        myVC.stringPassed = myLabel.text!
-        myVC.intPassed = myInt
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "pview") as! ProductView
+        
+        myVC.sentProduct = self.products[indexPath.row]
+        
         navigationController?.pushViewController(myVC, animated: true)
         
         

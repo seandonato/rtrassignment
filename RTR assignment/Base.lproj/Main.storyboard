@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="2118" y="-182"/>
         </scene>
-        <!--View Controller-->
+        <!--Product View-->
         <scene sceneID="eC3-l5-XvJ">
             <objects>
-                <viewController storyboardIdentifier="pview" id="6AM-Pq-DVc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pview" id="6AM-Pq-DVc" customClass="ProductView" customModule="RTR_assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YdP-t6-YfI"/>
                         <viewControllerLayoutGuide type="bottom" id="OZv-hB-fs6"/>

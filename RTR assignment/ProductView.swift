@@ -14,8 +14,18 @@ import UIKit
 
 class ProductView : UIViewController {
 
+    var sentProduct : Product = Product();
+    
+    @IBOutlet weak var imgView: UIImageView?
 
+    override func viewDidLoad() {
+        
+        
+        super.viewDidLoad()
 
-
+        
+        
+        
+    }
 
 }

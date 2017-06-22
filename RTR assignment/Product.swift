@@ -19,9 +19,8 @@ class Product: NSObject{
     var fitNotes = "";
     var styleNotes = "";
     var imagesBySize: NSDictionary = NSDictionary();
-    var rentalFee8Day = "";
-    var rentalFee = "";
-    var clearance = "";
-    
+    var rentalFee8Day : Int = Int();
+    var rentalFee : Int = Int();
+    var clearance : Bool =  Bool();
     
     }
