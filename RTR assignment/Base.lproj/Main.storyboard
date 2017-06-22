@@ -85,12 +85,51 @@
                     <view key="view" contentMode="scaleToFill" id="JQx-vQ-7k1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LcA-Me-pob">
+                                <rect key="frame" x="0.0" y="362" width="375" height="285"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GEg-w4-RvA">
+                                <rect key="frame" x="0.0" y="28" width="375" height="326"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HxX-J1-7gf" appends="YES" id="npc-l8-iuq"/>
+                                    <outletCollection property="gestureRecognizers" destination="xas-Do-0kZ" appends="YES" id="R1y-yi-8Rt"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imgView1" destination="GEg-w4-RvA" id="mGi-ZL-MBx"/>
+                        <outlet property="swiped" destination="E6d-fZ-44A" id="wHM-y6-eOf"/>
+                        <outlet property="txtView1" destination="LcA-Me-pob" id="i2s-wE-xr9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiv-nK-dZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="E6d-fZ-44A">
+                    <connections>
+                        <action selector="imgSwipe:" destination="6AM-Pq-DVc" id="bPE-Po-SOJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="HxX-J1-7gf">
+                    <connections>
+                        <action selector="imgSwipe:" destination="6AM-Pq-DVc" id="Pxz-DF-phZ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="xas-Do-0kZ">
+                    <connections>
+                        <action selector="imgSwipe:" destination="6AM-Pq-DVc" id="U5g-Tq-e3L"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3398" y="50"/>
+            <point key="canvasLocation" x="3397.5999999999999" y="49.925037481259373"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="65v-6R-MG7">
