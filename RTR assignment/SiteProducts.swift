@@ -21,17 +21,23 @@ UITableViewController{
     var products : [Product] = [];
     var fromSiteOrSaved : String = ""
     var heart = 0
+    var didSave : Bool = false
+
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        products.removeAll()
+
+        self.do_table_refresh()
             //1
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -158,10 +164,11 @@ UITableViewController{
                     
                     }else{
                         
-                        
+
                         if(self.savedProductNames.count > 0){
                             
-                        
+                             self.didSave  = true
+
                         var y = self.savedProductNames.count-1
                         for j in 0...y{
                             
@@ -234,10 +241,17 @@ UITableViewController{
         
         myVC.heart = self.heart
         
+        myVC.didSave = self.didSave
+        
         navigationController?.pushViewController(myVC, animated: true)
         
         
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        products.removeAll()
+        self.do_table_refresh()
+    }
 }
 

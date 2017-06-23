@@ -16,6 +16,8 @@ class ProductView : UIViewController {
 
     @IBOutlet var heartButton: UIButton!
     
+    var savedProductNames : [NSManagedObject] = []
+
     var heart = 0;
     
     var index = 0;
@@ -30,11 +32,61 @@ class ProductView : UIViewController {
 
     @IBOutlet var txtView1: UITextView!
     
+    var didSave : Bool = false
+    
+    let appDel:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "SavedProduct")
+        
+        //3
+        do {
+            savedProductNames = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
 
+        
+        if(self.savedProductNames.count > 0){
+            
+            
+            var y = self.savedProductNames.count-1
+            for j in 0...y{
+                
+                
+                var spEntity = self.savedProductNames[j]
+                
+                var dName : String = spEntity.value(forKey: "displayName") as! String
+                
+                if(sentProduct.displayName == dName){
+                    
+                    heart = 1;
+                    
+                    var im : UIImage = UIImage(named:"heartred")!
+                    
+                    
+                    heartButton.setImage(im, for: UIControlState.normal)
+
+                    didSave = true;
+                }
+            }
+            
+        }
         
         imageUrlsBySize = sentProduct.imagesBySize;
         
@@ -125,11 +177,6 @@ class ProductView : UIViewController {
     
     @IBAction func save(_ sender: Any) {
         
-        var im : UIImage = UIImage(named:"heartred")!
-        
-
-        heartButton.setImage(im, for: UIControlState.normal)
-        
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -139,6 +186,17 @@ class ProductView : UIViewController {
         // 1
         let managedContext =
             appDelegate.persistentContainer.viewContext
+
+        if(didSave == false){
+            
+            didSave = true;
+            
+        var im : UIImage = UIImage(named:"heartred")!
+        
+
+        heartButton.setImage(im, for: UIControlState.normal)
+        
+        
         
         // 2
         let entity =
@@ -157,6 +215,66 @@ class ProductView : UIViewController {
             //SavedProduct.append(savedProd)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+        }
+            
+        }else{
+            
+            didSave = false;
+            
+            heart = 0;
+            
+            var im : UIImage = UIImage(named:"heart")!
+            
+            
+            heartButton.setImage(im, for: UIControlState.normal)
+            
+            let fetchRequest =
+                NSFetchRequest<NSManagedObject>(entityName: "SavedProduct")
+            
+            //3
+            do {
+                savedProductNames = try managedContext.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+
+
+            if(self.savedProductNames.count > 0){
+                
+            var y = self.savedProductNames.count-1
+                
+            for j in 0...y{
+                
+                
+                var spEntity = self.savedProductNames[j]
+                
+                var dName : String = spEntity.value(forKey: "displayName") as! String
+                
+                if(sentProduct.displayName == dName){
+                    //////
+                    
+                    // 2
+                    
+                    // remove your object
+                    
+                    
+                    // save your changes
+                    // remove your object
+                    
+                    // save your changes 
+                    
+                    managedContext.delete(spEntity)
+
+                    do{
+                        
+                        try managedContext.save()
+                        
+                    }catch{
+                        print(" ")
+                    }
+                }
+            }
+            }
         }
     }
 
