@@ -8,12 +8,16 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 
 
 
 class ProductView : UIViewController {
 
+    @IBOutlet var heartButton: UIButton!
+    
+    var heart = 0;
+    
     var index = 0;
     
     var sentProduct : Product = Product();
@@ -114,14 +118,47 @@ class ProductView : UIViewController {
         
         self.imgView1.image = self.images[index]
         
-        
         index = (index < images.count-1) ? index+1 : 0
 
     }
     
     
-    
+    @IBAction func save(_ sender: Any) {
+        
+        var im : UIImage = UIImage(named:"heartred")!
+        
 
-    
-
+        heartButton.setImage(im, for: UIControlState.normal)
+        
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "SavedProduct",
+                                       in: managedContext)!
+        
+        let savedProd = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        // 3
+        savedProd.setValue(sentProduct.displayName, forKeyPath: "displayName")
+        
+        // 4
+        do {
+            try managedContext.save()
+            //SavedProduct.append(savedProd)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
+
+    
+}

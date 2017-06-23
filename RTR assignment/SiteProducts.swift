@@ -8,33 +8,54 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class SiteProducts :
 
 UITableViewController{
     
 
-    
+    var savedProductNames : [NSManagedObject] = []
     var data1 = NSMutableData();
     var dataArray : [NSDictionary] = [];
     var products : [Product] = [];
-
+    var fromSiteOrSaved : String = ""
+    var heart = 0
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        
-        
+            //1
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "SavedProduct")
+        
+        //3
+        do {
+            savedProductNames = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
         self.getData()
 
     }
+    
     func getData(){
         
     
@@ -130,7 +151,35 @@ UITableViewController{
 
                    // iProduct.styleName = (dic.value(forKeyPath: "styleName") as! String);
                 
-                    self.products.append(iProduct);
+                    if( self.fromSiteOrSaved == "site" ){
+                    
+                        self.products.append(iProduct);
+
+                    
+                    }else{
+                        
+                        
+                        if(self.savedProductNames.count > 0){
+                            
+                        
+                        var y = self.savedProductNames.count-1
+                        for j in 0...y{
+                            
+                            
+                            var spEntity = self.savedProductNames[j]
+                            
+                            var dName : String = spEntity.value(forKey: "displayName") as! String
+                            
+                            if(iProduct.displayName == dName){
+                            
+                                self.products.append(iProduct);
+
+                            }
+                        }
+                        
+                        }
+                    }
+                    
                     
                     if(i == x){
                         
@@ -182,6 +231,8 @@ UITableViewController{
         let myVC = storyboard?.instantiateViewController(withIdentifier: "pview") as! ProductView
         
         myVC.sentProduct = self.products[indexPath.row]
+        
+        myVC.heart = self.heart
         
         navigationController?.pushViewController(myVC, animated: true)
         
