@@ -128,9 +128,17 @@ class ProductView : UIViewController {
        // downloadImage(url: checkedUrls[0])
             
     
-
-        var text = sentProduct.displayName + "\n" + sentProduct.designer + "\n"
-            + sentProduct.styleNotes
+        var clear = ""
+        
+        if(sentProduct.clearance == true){
+            clear = "yes"
+        }else{
+            clear = "no"
+        }
+        
+        var text = sentProduct.displayName + "\n" + "Designer: " + sentProduct.designer + "\n" + sentProduct.type + "\n"
+            + sentProduct.styleNotes + "\n" + sentProduct.fitNotes + "\n" + "Rental Fee: " + String(sentProduct.rentalFee) + "\n" + "Rental Fee 8 day: " + String(sentProduct.rentalFee8Day) + "\n" + "Clearance: " + clear
+        
         
         self.txtView1.text = text
         
